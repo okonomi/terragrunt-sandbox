@@ -7,11 +7,6 @@ terraform {
   }
 }
 
-provider "google" {
-  project = "gitlab-preview-app-example"
-  region  = "asia-northeast1"
-}
-
 data "google_project" "this" {}
 
 output "project_id" {

@@ -11,3 +11,14 @@ remote_state {
     location = "asia-northeast1"
   }
 }
+
+generate "provider" {
+  path = "provider.tf"
+  if_exists = "overwrite_terragrunt"
+  contents = <<EOF
+provider "google" {
+  project = "gitlab-preview-app-example"
+  region  = "asia-northeast1"
+}
+EOF
+}
