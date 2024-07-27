@@ -5,11 +5,6 @@ terraform {
       version = "5.38.0"
     }
   }
-
-  backend "gcs" {
-    bucket  = "tf-state-gitlab-preview-app-example"
-    prefix  = "terraform/state"
-  }
 }
 
 provider "google" {
