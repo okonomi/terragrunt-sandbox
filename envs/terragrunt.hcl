@@ -1,6 +1,7 @@
 locals {
   google_project = "gitlab-preview-app-example"
   google_region  = "asia-northeast1"
+  stage          = path_relative_to_include()
 }
 
 remote_state {
@@ -11,7 +12,7 @@ remote_state {
   }
   config = {
     bucket   = "tf-state-gitlab-preview-app-example-terragrunt"
-    prefix   = "${path_relative_to_include()}/"
+    prefix   = "${local.stage}/"
     project  = local.google_project
     location = local.google_region
   }
@@ -24,6 +25,16 @@ generate "provider" {
 provider "google" {
   project = "${local.google_project}"
   region  = "${local.google_region}"
+}
+EOF
+}
+
+generate "locals" {
+  path      = "locals.tf"
+  if_exists = "overwrite_terragrunt"
+  contents  = <<EOF
+locals {
+  stage = "${local.stage}"
 }
 EOF
 }
