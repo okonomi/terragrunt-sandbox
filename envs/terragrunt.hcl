@@ -28,13 +28,3 @@ provider "google" {
 }
 EOF
 }
-
-generate "locals" {
-  path      = "locals.tf"
-  if_exists = "overwrite_terragrunt"
-  contents  = <<EOF
-locals {
-  stage = "${local.stage}"
-}
-EOF
-}

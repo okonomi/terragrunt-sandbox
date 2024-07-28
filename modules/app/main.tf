@@ -1,3 +1,7 @@
+variable "stage" {
+  
+}
+
 terraform {
   required_providers {
     google = {
@@ -14,5 +18,5 @@ output "project_id" {
 }
 
 output "stage" {
-  value = local.stage
+  value = var.stage
 }
